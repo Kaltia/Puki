@@ -1,0 +1,24 @@
+#Ejemplo de un archivo en yaml
+package nginx:
+  check: installed
+  file: 'nginx.conf'
+  
+module zsh:
+  package zsh:
+    check: installed
+
+  file oh-my-zsh:
+    source: git://www.github.com/robbyrussell/oh-my-zsh.git
+    require: Package["zsh"]
+    
+#Prueba de un modulo
+
+module nginx:
+  package nginx:
+    check: installed
+    file: 'nginx.conf'
+  
+  service nginx:
+    check: running
+    require: Package['nginx'];
+  
